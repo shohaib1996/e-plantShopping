@@ -1,45 +1,98 @@
-Task 5: Import details to store.js
-Importing Necessary Functions and Files:
+Task 6: Set up the global store
+Navigate to the main.jsx file in the src folder.
 
-The configureStore() function from the @reduxjs/toolkit package is imported to set up the Redux store.
-The cartReducer from the CartSlice.jsx file which is imported, manages the state slice related to the shopping cart.
+The Provider component from the react-redux library is already imported. This component enables all components in the application to access the Redux store.
+
 1
-2
-import { configureStore } from '@reduxjs/toolkit';
-import cartReducer from './CartSlice';
+import { Provider } from 'react-redux';
 
 Copied!
 
 Wrap Toggled!
-Configuring the Store:
+The Redux store is imported from the store.js file. This store holds the application's state, using the reducer defined in the CartSlice.jsx file.
+1
+import store from './store.js';
 
-The configureStore() function is used to setup the Redux store.
-Inside the configuration object passed to configureStore(), the reducer key specifies the reducer functions. In this case, the cartReducer is assigned to manage the cart slice of the state.
+Copied!
+
+Wrap Toggled!
+The App component is wrapped with the Provider component, with the Redux store passed as a prop. This allows all components in the app to access and interact with the global state managed by Redux.
 1
 2
 3
-4
-5
-6
-7
-8
-9
-10
-// Create a Redux store using configureStore from Redux Toolkit
-const store = configureStore({
-    // Define the root reducer object
-    reducer: {
-        // 'cart' is the name of the slice in the store, and it's managed by cartReducer
-        cart: cartReducer,
-    },
-});
-export default store; // Export the store for use in the app (e.g., in <Provider store={store}>)
+<Provider store={store}>
+  <App />
+</Provider>
 
 Copied!
 
 Wrap Toggled!
-Exporting the Store:
+Deploying Your Application with GitHub Pages
+Deploy using GitHub Pages
+To deploy your react application in GitHub you need to install gh-pages. This allows you to use it as a tool for deploying your project to GitHub Pages. Perform given command in the terminal
 
-The configured Redux store is exported using export default store;, so it can be used throughout the application to manage state.
 1
-export default store;
+npm install gh-pages --save-dev
+
+Copied!
+
+Wrap Toggled!
+Add given lines before "build": "vite build" in package.json file.
+
+1
+2
+"predeploy": "npm run build",
+"deploy": "gh-pages -d dist",
+
+Copied!
+
+Wrap Toggled!
+
+
+Then in the vite.config.js file add this line before plugins: [react()]
+
+1
+base: "/YOUR_REPOSITORY_NAME",
+
+Copied!
+
+Wrap Toggled!
+
+
+Note: Instead of <YOUR_REPOSITORY_NAME> write your own repository name such as assume if your github repository name is learning_react the it should look like base: "/learning_react"
+
+Now perform deploy command in the terminal to executes the "deploy" script defined in the package.json file, deploying the project to GitHub Pages using the gh-pages tool.
+
+1
+npm run deploy
+
+Copied!
+
+Wrap Toggled!
+
+
+Note: Whenever you make any change to your code you need to save all your files and perform git commands for them.
+
+Perform git add and git commit commands to update changes in your code. Then perform git push command to update your GitHub repository for proper code management.
+
+Go to your GitHub repository. Then, navigate to your site's repository that you created.
+
+Under your repository name, click Settings.
+
+
+
+Navigate to the left hand side navigation bar. In the Code and Automation section of the sidebar, click Pages.
+
+Settings tab with Pages circled
+
+You will see the page shown below. Click the drop down menu where you see None, then click gh-pages, and then click the Save button.
+
+
+
+Refresh your page again, and you will see the link, just as below. Instead of shoppingreact, you will see your github repository name.
+
+
+
+Note: If you are not able to see the link, please wait for (1-2) minutes and refresh the page again.
+
+Click above generated link to see your live website.
