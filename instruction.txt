@@ -1,97 +1,26 @@
-[{
-	"resource": "/d:/Web Development/Learning/e-plantShopping/src/ProductList.jsx",
-	"owner": "typescript",
-	"code": "2451",
-	"severity": 8,
-	"message": "Cannot redeclare block-scoped variable 'dispatch'.",
-	"source": "ts",
-	"startLineNumber": 9,
-	"startColumn": 11,
-	"endLineNumber": 9,
-	"endColumn": 19,
-	"origin": "extHost1"
-},{
-	"resource": "/d:/Web Development/Learning/e-plantShopping/src/ProductList.jsx",
-	"owner": "typescript",
-	"code": "2451",
-	"severity": 8,
-	"message": "Cannot redeclare block-scoped variable 'addedToCart'.",
-	"source": "ts",
-	"startLineNumber": 10,
-	"startColumn": 12,
-	"endLineNumber": 10,
-	"endColumn": 23,
-	"origin": "extHost1"
-},{
-	"resource": "/d:/Web Development/Learning/e-plantShopping/src/ProductList.jsx",
-	"owner": "typescript",
-	"code": "2451",
-	"severity": 8,
-	"message": "Cannot redeclare block-scoped variable 'setAddedToCart'.",
-	"source": "ts",
-	"startLineNumber": 10,
-	"startColumn": 25,
-	"endLineNumber": 10,
-	"endColumn": 39,
-	"origin": "extHost1"
-},{
-	"resource": "/d:/Web Development/Learning/e-plantShopping/src/ProductList.jsx",
-	"owner": "typescript",
-	"code": "2451",
-	"severity": 8,
-	"message": "Cannot redeclare block-scoped variable 'handleAddToCart'.",
-	"source": "ts",
-	"startLineNumber": 12,
-	"startColumn": 11,
-	"endLineNumber": 12,
-	"endColumn": 26,
-	"origin": "extHost1"
-},{
-	"resource": "/d:/Web Development/Learning/e-plantShopping/src/ProductList.jsx",
-	"owner": "typescript",
-	"code": "2451",
-	"severity": 8,
-	"message": "Cannot redeclare block-scoped variable 'dispatch'.",
-	"source": "ts",
-	"startLineNumber": 224,
-	"startColumn": 11,
-	"endLineNumber": 224,
-	"endColumn": 19,
-	"origin": "extHost1"
-},{
-	"resource": "/d:/Web Development/Learning/e-plantShopping/src/ProductList.jsx",
-	"owner": "typescript",
-	"code": "2451",
-	"severity": 8,
-	"message": "Cannot redeclare block-scoped variable 'addedToCart'.",
-	"source": "ts",
-	"startLineNumber": 225,
-	"startColumn": 12,
-	"endLineNumber": 225,
-	"endColumn": 23,
-	"origin": "extHost1"
-},{
-	"resource": "/d:/Web Development/Learning/e-plantShopping/src/ProductList.jsx",
-	"owner": "typescript",
-	"code": "2451",
-	"severity": 8,
-	"message": "Cannot redeclare block-scoped variable 'setAddedToCart'.",
-	"source": "ts",
-	"startLineNumber": 225,
-	"startColumn": 25,
-	"endLineNumber": 225,
-	"endColumn": 39,
-	"origin": "extHost1"
-},{
-	"resource": "/d:/Web Development/Learning/e-plantShopping/src/ProductList.jsx",
-	"owner": "typescript",
-	"code": "2451",
-	"severity": 8,
-	"message": "Cannot redeclare block-scoped variable 'handleAddToCart'.",
-	"source": "ts",
-	"startLineNumber": 227,
-	"startColumn": 11,
-	"endLineNumber": 227,
-	"endColumn": 26,
-	"origin": "extHost1"
-}]
+Task 2: State management using Redux
+You have the basic layout in the CartSlice.jsx file.
+
+Define Reducer Functions
+
+Now implement the reducer property of the slice for adding, removing, and updating the number of items in the cart.
+
+These reducer functions will be called when user wants to add or remove the quantity of plants within the cartItems component.
+
+The addItem() reducer adds a new plant item to the items array which you initialized in the previous step.
+
+The addItem() function should get called when the user selects an Add to cart on the plant listing page. Subsequently, the handleAddToCart() gets called which has the plant type as a parameter.
+
+The handleAddToCart() function will then dispatch the plant details to the addItem() reducer function in CartSlice.jsx.
+
+addItem() reducer sample solution
+Now you need to complete code for the removeItem() and updateQuantity() reducers.
+
+removeItem(): This reducer removes an item from the cart based on its name and gets called when the user wants to remove products from the cart.
+
+removeItem() reducer sample solution
+updateQuantity(): To create this function, start by extracting the item's name and amount from the action.payload. Then, look for the item in the state.items array that matches the extracted name. If the item is found, update its quantity to the new amount provided in the payload. This ensures the item’s quantity is correctly updated based on the action.
+updateQuantity() reducer sample solution
+Handle Actions
+Export the action creators, addItem() to use in ProductList.jsx, removeItem(), and updateQuantity(), to use in the CartItem.jsx.
+Also export the reducer as the default to use in store.js.
