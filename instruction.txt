@@ -1,14 +1,45 @@
-Task 4: Integrate Redux functionality in your components
-ProductList Component
-Initialize the cart state within the Redux store to keep track of cart items.
-Click here to see hints
-Use the addItem action to add selected products to the cart.
-Access the Redux store to retrieve and display the total quantity of items currently in the cart.
-Click here to see hints
-CartItem Component
-Use the updateQuantity action to change how many items are in the cart.
-Use the addItem action to add a new product to the cart.
-Use the removeItem action to delete an item completely from the cart.
-Click here to see hints
+Task 5: Import details to store.js
+Importing Necessary Functions and Files:
+
+The configureStore() function from the @reduxjs/toolkit package is imported to set up the Redux store.
+The cartReducer from the CartSlice.jsx file which is imported, manages the state slice related to the shopping cart.
 1
-dispatch(removeItem(item.name));
+2
+import { configureStore } from '@reduxjs/toolkit';
+import cartReducer from './CartSlice';
+
+Copied!
+
+Wrap Toggled!
+Configuring the Store:
+
+The configureStore() function is used to setup the Redux store.
+Inside the configuration object passed to configureStore(), the reducer key specifies the reducer functions. In this case, the cartReducer is assigned to manage the cart slice of the state.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+// Create a Redux store using configureStore from Redux Toolkit
+const store = configureStore({
+    // Define the root reducer object
+    reducer: {
+        // 'cart' is the name of the slice in the store, and it's managed by cartReducer
+        cart: cartReducer,
+    },
+});
+export default store; // Export the store for use in the app (e.g., in <Provider store={store}>)
+
+Copied!
+
+Wrap Toggled!
+Exporting the Store:
+
+The configured Redux store is exported using export default store;, so it can be used throughout the application to manage state.
+1
+export default store;
